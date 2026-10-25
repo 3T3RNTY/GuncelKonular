@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#1b2742 0%,#16525a 65%,#3f8f8a 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .meta span{font-weight:400;color:var(--ink);margin-left:6px}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--teal)}
+  .box.warn:before{background:var(--red)} .box.warn{background:#fbe9e6}
+  .box b.k{color:var(--teal-d)}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 9px;font-weight:700}
+  td{border:1px solid var(--line);padding:7px 9px;vertical-align:top}
+  td:first-child{font-weight:700;white-space:nowrap}
+  .lane{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin:16px 0 6px}
+  .flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}
+  .n{border-radius:7px;padding:8px 10px;text-align:center;font-weight:700;font-size:12.5px;flex:1;min-width:120px;display:flex;flex-direction:column;justify-content:center}
+  .n small{font-weight:400;font-size:10.5px;opacity:.9;display:block;margin-top:2px}
+  .arr{align-self:center;color:var(--muted);font-size:18px}
+  .n-light{background:#d3e2ee} .n-teal{background:var(--teal);color:#fff} .n-red{background:var(--red);color:#fff}
+  .n-navy{background:var(--navy);color:#fff} .n-orange{background:var(--orange);color:#fff} .n-gray{background:#e6ebf0}
+  .src{outline:3px dashed var(--red);outline-offset:3px}
+  .cross{margin:12px 0 4px;padding:8px 12px;border:2px dashed var(--amber);border-radius:8px;font-size:12.5px;background:#fff8e6}
+  .cross b{color:#8a6100}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:2px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)} .refs a{color:var(--teal-d)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta{grid-template-columns:1fr} .arr{display:none} .n{min-width:100%}
+    table{display:block;overflow-x:auto} td:first-child{white-space:normal}
+  }
+  @media print{
+    body{background:#fff} .page{box-shadow:none;margin:0;max-width:none}
+    header,th,.n,.box,.cross{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li,table,.flow{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+    .pb{break-before:page;page-break-before:always}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 1 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>Safety Architecture</h1>
+  <div class="out">Çıktı: Safety Function Map</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad:   Emirhan Bayrak<span></span></div>
+    <div>Grup:   Gündüz<span></span></div>
+    <div>Tarih:   25.10.2026<span></span></div>
+  </div>
+
+  <div class="box"><b class="k">Kavram:</b> Emniyet fonksiyonu, insanı koruyan fonksiyondur ve <b class="k">ayrı bir safety yolunda</b> yaşar (E-stop → emniyet rölesi / Safety PLC → STO + Z freni). Gerekli güvenilirliği (PLr/SIL) riskle orantılıdır — ve bu güvenilirlik, <b class="k">dijital bir konfigürasyona</b> (sürücü, inverter ve kontrol yazılımı parametreleri) bağlıdır.</div>
+
+  <h2>Mimari — Drachen 2128 Hyper</h2>
+  <div class="lane" style="color:var(--navy)">Normal kontrol yolu · üretim</div>
+  <div class="flow">
+    <div class="n n-light">Sensörler<small>limit/referans switch, enkoder, vakum basınç sensörü, takım boyu sensörü</small></div>
+    <div class="arr">→</div>
+    <div class="n n-teal">CNC Kontrol<small>PC + hareket kartı · G-kodu yorumlar</small></div>
+    <div class="arr">→</div>
+    <div class="n n-light">Aktüatörler<small>X/Y/Z servo sürücüler · spindle inverter (VFD) · vakum pompası · yağlama</small></div>
+    <div class="n n-orange">CNC PC / Uzak Erişim<small>USB/ağ ile G-kodu yükleme · uzak masaüstü ile servis · sürücü/inverter parametre portları</small></div>
+  </div>
+  <div class="cross"><b>Dijital kesişim noktaları:</b> (a) servo sürücülerin STO girişi ve fren çıkışı parametreleri, (b) spindle inverterinin duruş/rampa parametreleri, (c) acil stop sinyalinin CNC kontrol kartına girip girmediği, (d) emniyet modülü programlanabilir ise onun konfigürasyonu.</div>
+  <div class="lane" style="color:var(--red)">Safety yolu · koruma · ayrı</div>
+  <div class="flow src">
+    <div class="n n-gray">Acil stop butonları / gantry tamponu / ışık perdesi veya basınç paspası</div>
+    <div class="arr">→</div>
+    <div class="n n-red">Emniyet rölesi / Safety PLC<small>2 kanallı, izlemeli</small></div>
+    <div class="arr">→</div>
+    <div class="n n-gray">STO (X/Y/Z sürücü) + spindle kontaktörü + Z freni</div>
+    <div class="arr">→</div>
+    <div class="n n-navy">Safe State</div>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin:10px 0 0">Kırmızı kesik çerçeve = Safety-related control system (SRP/CS), yani soru 3'ün cevabı.</p>
+
+  <h2 class="pb">Görev — sırayla cevaplayın</h2>
+  <ol class="q">
+    <li><div class="qt">Bu makinede tehlike nedir? İnsan neyden zarar görür?</div>
+      <div class="a"><ul>
+        <li><b>Dönen takım / spindle</b> (≈18–24 bin dev/dk): kesilme, el-parmak kaybı, eldiven/kol kaptırma.</li>
+        <li><b>Hareketli gantry</b> (2,1 × 2,8 m tabla üzerinde X/Y): portal ile tabla, kolon veya duvar arasında <b>ezilme ve sıkışma</b>. Operatör levhayı tablaya yüklerken bu bölgeye girer.</li>
+        <li><b>Z ekseninin yerçekimiyle düşmesi</b>: enerji kesilince spindle başlığı aşağı iner. İlandaki <b>frenli Z servo</b> bu tehlikeye karşı konmuştur.</li>
+        <li><b>Fırlayan parça</b>: vakum kaybında levha veya küçük parça, kırılan takım ya da takım parçası savrulur.</li>
+        <li>Diğer: ahşap tozu (sağlık ve toz patlaması), gürültü, elektrik.</li>
+      </ul></div></li>
+
+    <li><div class="qt">Safety function (emniyet fonksiyonu) hangisidir?</div>
+      <div class="a"><ul>
+        <li><b>SF1 Acil durdurma</b>: E-stop → tüm eksenlerde STO, spindle enerjisi kesilir, Z freni kapanır.</li>
+        <li><b>SF2 Gantry tehlike bölgesinde kişi algılama</b>: ışık perdesi, basınç paspası veya gantry tamponu tetiklenince hareket durur.</li>
+        <li><b>SF3 Güvenli fren kontrolü (SBC)</b>: Z ekseni enerjisiz kaldığında mekanik fren tutar.</li>
+        <li><b>SF4 Spindle durma izleme</b>: takım değişimi veya koruyucu açılmadan önce spindle'ın durduğunun doğrulanması.</li>
+        <li><b>SF5 Vakum basıncı izleme</b>: basınç düşerse besleme ve spindle durdurulur.</li>
+      </ul>Föyün geri kalanı <b>SF1 + SF2</b> üzerine kurulu, çünkü insanı doğrudan koruyan ana fonksiyonlar bunlar.</div></li>
+
+    <li><div class="qt">Safety-related control system nerede? Şemada işaretleyin.</div>
+      <div class="a">Şemada kırmızı kesik çerçeve: <b>giriş</b> (E-stop butonları, ışık perdesi/paspas/tampon) → <b>mantık</b> (2 kanallı emniyet rölesi veya Safety PLC) → <b>çıkış</b> (servo sürücülerin STO girişleri, spindle kontaktörü, Z fren rölesi). CNC PC ve hareket kartı bu zincirin <b>dışında</b> kalmalıdır. Bu sınıftaki ekonomik makinelerde E-stop'un yalnızca CNC kontrol kartının bir girişine bağlandığı görülür; bu durumda SRP/CS fiilen yazılımın içindedir. Sahada kablaj şemasıyla kontrol edilmeli.</div></li>
+
+    <li><div class="qt">Normal PLC ile Safety PLC farkı nedir?</div>
+      <div class="a">Bu makinede "normal PLC"nin karşılığı <b>CNC kontrol (PC + hareket kartı)</b>. Görevi: G-kodunu yorumlamak, eksenleri konumlamak, spindle devrini ayarlamak. Tek kanallıdır, kendi arızasını teşhis etmez, Windows ve ağ ortamında çalışır. Bozulduğunda ne yapacağı belli değildir. <b>Safety PLC / emniyet rölesi</b> ise 2 kanallıdır (yedekli), kendi kendini ve kablajı sürekli test eder (kısa devre, kontak yapışması), arızada her zaman <b>durdurma</b> yönüne düşer (fail-safe), sertifikalıdır (PL/SIL derecesi vardır) ve konfigürasyonu parola ve sağlama toplamı ile korunur. Tek işi durdurmaktır, üretim mantığı içermez.</div></li>
+
+    <li><div class="qt">PLr / SIL neden var? Bu fonksiyon için neden önemli?</div>
+      <div class="a">PLr, "bu fonksiyon ne kadar güvenilir olmak zorunda?" sorusunun riskle orantılı cevabıdır (EN ISO 13849-1). SF2 (gantry altında ezilme) için risk grafiği: <b>S2</b> (ağır, kalıcı yaralanma) · <b>F2</b> (operatör her levha yüklemede tablaya girer) · <b>P1/P2</b> (gantry hızlıysa kaçınmak zor) → <b>PLr d</b>, kaçınma imkânsızsa <b>PLr e</b>. SF1 acil durdurma için en az <b>PL c</b>, bu makinede pratikte <b>PL d</b> hedeflenir. Önemi: E-stop yalnızca CNC yazılımı üzerinden çalışıyorsa elde edilen seviye tek kanallı bir yapıyla sınırlı kalır ve PLr d'ye ulaşılamaz. Kesin PLr değerleri EN ISO 19085-3 tablolarından alınmalıdır.</div></li>
+
+    <li><div class="qt">Safe state (güvenli durum) nedir?</div>
+      <div class="a"><ul>
+        <li>Spindle <b>durmuş</b> (sıfır devir doğrulanmış, sadece "enerjisi kesilmiş" yetmez; takım uzun süre serbest döner).</li>
+        <li>X/Y eksenleri torksuz (STO), <b>Z ekseni mekanik frenle tutulu</b> (enerjisiz Z düşer, bu yüzden STO tek başına güvenli durum değildir).</li>
+        <li><b>Dikkat:</b> vakum, spindle durana kadar <b>açık kalmalı</b>. "Her şeyi kapat" burada güvenli durum değildir, çünkü dönen takım altında serbest kalan levha fırlar.</li>
+        <li>Yeniden başlatma yalnızca bilinçli bir reset ile olur, kendiliğinden kalkış yoktur.</li>
+      </ul></div></li>
+
+    <li><div class="qt">Safety function hangi dijital bağımlılıklara sahip?</div>
+      <div class="a"><ul>
+        <li><b>Servo sürücü parametreleri</b>: STO girişinin etkinliği, fren çıkışının açılma/kapanma gecikmesi, Stop-1 rampa süresi, tork limitleri.</li>
+        <li><b>Spindle inverter (VFD) parametreleri</b>: frenleme/rampa süresi, azami frekans (takımın izin verilen devri), DC frenleme.</li>
+        <li><b>CNC yazılımı</b>: yazılım limitleri, ilerleme hızı, E-stop girişinin yazılımda işlenip işlenmediği, G-kodu dosyaları.</li>
+        <li><b>Emniyet modülü konfigürasyonu</b> (programlanabilir ise): muting, bypass, reset mantığı.</li>
+        <li><b>Firmware sürümleri</b> (sürücü, inverter, hareket kartı) ve parametre yedeklerinin bütünlüğü.</li>
+      </ul></div></li>
+
+    <li><div class="qt">Siber müdahale hangi noktadan bu fonksiyonu bozar?</div>
+      <div class="a"><ul>
+        <li><b>CNC PC (giriş kapısı)</b>: USB bellekle G-kodu getirme, ağ paylaşımı, uzak masaüstü/servis yazılımı. Bu PC üzerinden yazılım limitleri ve hız değerleri değiştirilebilir. E-stop yazılım üzerinden işleniyorsa acil durdurma da etkisiz kalabilir.</li>
+        <li><b>Sürücü ve inverter parametre portları</b> (USB/RS-485/Modbus): Z fren gecikmesi bozulursa başlık düşer. Inverter rampa süresi uzatılırsa spindle durdurmadan sonra dakikalarca döner. Azami frekans yükseltilirse takım kırılıp fırlar.</li>
+        <li><b>G-kodu manipülasyonu</b>: tablaya veya bağlama elemanına dalış, aşırı ilerleme hızı → fırlayan parça.</li>
+        <li><b>Emniyet modülü konfigürasyonu</b>: ışık perdesi bypass edilirse SF2 sessizce devre dışı kalır.</li>
+      </ul><b>Ana bulgu:</b> SF1 ve SF2 donanımsal ve CNC PC'den bağımsız kalırsa, siber saldırı makinede üretim veya kalite sorunu yaratır ama insanı korunmasız bırakmaz. Bu bağımsızlık bu makine için doğrulanmalıdır.</div></li>
+  </ol>
+
+  <h2 class="pb">Safety Function Map — çıktı</h2>
+  <table>
+    <tr><th>ID</th><th>Tehlike</th><th>Tetik → Aksiyon</th><th>Safe state</th><th>PLr</th><th>Dijital bağımlılık</th></tr>
+    <tr><td>SF1</td><td>Tüm tehlikeler</td><td>E-stop → STO + spindle kontaktörü + Z freni</td><td>Hareket yok, Z tutulu</td><td>d</td><td>Sürücü STO/fren parametreleri, E-stop yolu</td></tr>
+    <tr><td>SF2</td><td>Gantry ezilme</td><td>Işık perdesi / paspas / tampon → eksenler durur</td><td>Gantry durur</td><td style="white-space:nowrap">d (e)</td><td>Emniyet modülü konfigürasyonu, bypass</td></tr>
+    <tr><td>SF3</td><td>Z düşmesi</td><td>Enerji kesildi → fren kapanır</td><td>Z mekanik tutulu</td><td>d</td><td>Sürücü fren gecikmesi parametresi</td></tr>
+    <tr><td>SF4</td><td>Dönen takım</td><td>Durma izleme → koruyucu kilidi / takım değişimi izni</td><td>Sıfır devir</td><td>c–d</td><td>Inverter rampa ve frekans parametreleri</td></tr>
+    <tr><td>SF5</td><td>Fırlayan parça</td><td>Vakum düşük → ilerleme ve spindle durur</td><td>Spindle durur, vakum açık</td><td>c</td><td>Basınç eşiği (CNC yazılımı)</td></tr>
+  </table>
+
+  <div class="foot">Bu föyün çıktısı <b>Safety Function Map</b> → Evidence Pack <b>EP 03 Safety Functions</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> <a href="https://www.makinaturkiye.com/210x280x15-cm-cnc-ahsap-isleme-makinasi-v-27794">makinaturkiye.com — 210x280x15 cm CNC Ahşap İşleme Makinası (Drachen 2128 Hyper)</a> · <a href="https://www.makinaturkiye.com/en/wood-cnc-processing-machines-c-94643">makinaturkiye.com — Wood CNC Processing Machines</a> · <a href="https://www.makinaturkiye.com/turkoglumakine">Türkoğlu Makine</a> · EN ISO 19085-1/-3, EN ISO 13849-1, EN 60204-1, EN ISO 13850.</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 1</span></div>
+</div>
+</body>
+</html>

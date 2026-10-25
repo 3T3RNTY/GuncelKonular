@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#1b2742 0%,#6b3236 60%,#b5634e 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--orange)}
+  .box.warn{background:#fbe9e6} .box.warn:before{background:var(--red)}
+  .box b.k{color:var(--teal-d)}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 9px;font-weight:700}
+  td{border:1px solid var(--line);padding:8px 9px;vertical-align:top}
+  td.num{text-align:center;font-weight:900;font-size:14px;vertical-align:middle}
+  .sc dl{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;margin:4px 0 0}
+  .sc dt{font-weight:700;color:var(--muted);font-size:11.5px}
+  .sc dd{margin:0}
+  .sc .t{font-weight:900}
+  .chip{display:inline-block;border-radius:6px;padding:3px 10px;font-weight:700;font-size:12px;color:#fff;white-space:nowrap}
+  .c-krit{background:var(--red)} .c-yuk{background:var(--orange)} .c-orta{background:var(--amber);color:#3d2a00} .c-dus{background:#5b6675}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+  .up{display:block;margin-top:6px;font-size:11px;font-weight:700;color:var(--red)}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:2px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta{grid-template-columns:1fr}
+    table{display:block;overflow-x:auto}
+  }
+  @media print{
+    body{background:#fff;font-size:13px;line-height:1.45} .page{box-shadow:none;margin:0;max-width:none}
+    @page{margin:12mm 10mm}
+    h2{margin:18px 0 8px} td{padding:6px 8px} ol.q>li{padding-bottom:10px;margin-bottom:10px}
+    main{padding-bottom:4px} .box,.foot{margin:8px 0} .refs{margin:6px 0 0} .pf{padding:4px 0 0}
+    h2{margin:12px 0 6px} .chips{margin:8px 0 0} ol.q>li{padding-bottom:8px;margin-bottom:8px}
+    header,th,.box,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li,tr,.box{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 3 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>Threat &amp; Risk + Risk Matrix</h1>
+  <div class="out">Çıktı: Risk Register</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad: Emirhan Bayrak</div>
+    <div>Grup: Gündüz</div>
+    <div>Tarih: 25.10.2026</div>
+  </div>
+
+  <div class="box"><b class="k">Kavram:</b> Senaryo beş parçadır: <b class="k">kim → hangi kapı → ne yapar → zincir → FİZİKSEL sonuç</b>. Skor = L × S × E (her biri 1–3). <b class="k">Kural:</b> S=3 ise skor düşük olsa bile senaryo öne alınır — insana zarar görünür kalır.</div>
+
+  <p style="font-size:12.5px;color:var(--muted);margin:0">L = olasılık (saldırının gerçekleşme ihtimali) · S = şiddet (insana verilen zarar; 3 = ağır / kalıcı yaralanma) · E = maruziyet (insanın tehlike bölgesinde bulunma sıklığı).</p>
+
+  <h2>Görev — üç senaryo kurun ve puanlayın</h2>
+  <table>
+    <tr><th style="width:56%">Senaryo (kim → kapı → zincir → fiziksel sonuç)</th><th>L</th><th>S</th><th>E</th><th>Skor</th><th>Öncelik</th></tr>
+    <tr>
+      <td class="sc"><span class="t">R1 · Uzak servis hesabı ele geçirilir, spindle durmaz</span>
+        <dl>
+          <dt>Kim</dt><dd>Servis firmasının parolasını çalan dış saldırgan</dd>
+          <dt>Kapı</dt><dd>CNC PC'de sürekli açık uzak masaüstü yazılımı (paylaşılan servis hesabı, MFA yok)</dd>
+          <dt>Ne yapar</dt><dd>CNC PC üzerinden spindle inverterinin duruş rampa süresini uzatır, DC frenlemeyi kapatır</dd>
+          <dt>Zincir</dt><dd>Acil stop veya program sonu sonrasında spindle dakikalarca serbest döner; ekranda "durdu" görünür</dd>
+          <dt>Fiziksel sonuç</dt><dd>Operatör takım değiştirmek veya talaşı temizlemek için spindle'a uzanır → <b>el / parmak kesilmesi</b></dd>
+        </dl></td>
+      <td class="num">2</td><td class="num">3</td><td class="num">3</td><td class="num">18</td><td><span class="chip c-krit">Kritik</span></td>
+    </tr>
+    <tr>
+      <td class="sc"><span class="t">R2 · USB ile gelen bozuk G-kodu, takım kırılır</span>
+        <dl>
+          <dt>Kim</dt><dd>Habersiz operatör (USB belleğe bulaşmış zararlı) veya kötü niyetli iç personel</dd>
+          <dt>Kapı</dt><dd>CNC PC'nin USB girişi / kontrolsüz paylaşım klasörü</dd>
+          <dt>Ne yapar</dt><dd>Nesting dosyasındaki Z derinliğini, ilerleme hızını ve devri değiştirir</dd>
+          <dt>Zincir</dt><dd>Takım vakum tablasına dalar, aşırı yüklenir ve kırılır; levha vakumdan kopar</dd>
+          <dt>Fiziksel sonuç</dt><dd>Kırılan takım parçası veya levha savrulur → yakındaki operatörde <b>darbe, göz yaralanması</b></dd>
+        </dl></td>
+      <td class="num">2</td><td class="num">2</td><td class="num">3</td><td class="num">12</td><td><span class="chip c-yuk">Yüksek</span></td>
+    </tr>
+    <tr>
+      <td class="sc"><span class="t">R3 · Acil stop yazılımdan devre dışı bırakılır</span>
+        <dl>
+          <dt>Kim</dt><dd>Makineyi tanıyan hedefli saldırgan (eski servis çalışanı gibi)</dd>
+          <dt>Kapı</dt><dd>Uzak erişim → CNC PC → CNC yazılımının giriş ayarları (E-stop yalnızca CNC kartına bağlıysa)</dd>
+          <dt>Ne yapar</dt><dd>E-stop girişini yazılımda "devre dışı" veya ters mantık olarak ayarlar</dd>
+          <dt>Zincir</dt><dd>Gerçek bir acil durumda butona basılır ama STO tetiklenmez, gantry hareket etmeye devam eder</dd>
+          <dt>Fiziksel sonuç</dt><dd>Tablada sıkışan kişi kurtarılamaz → <b>ezilme, ağır / kalıcı yaralanma</b></dd>
+        </dl></td>
+      <td class="num">1</td><td class="num">3</td><td class="num">1</td><td class="num">3</td><td><span class="chip c-dus">Düşük</span><span class="up">↑ S=3 kuralıyla öne alındı</span></td>
+    </tr>
+  </table>
+  <div class="chips"><span class="chip c-krit">Kritik 18–27</span><span class="chip c-yuk">Yüksek 9–17</span><span class="chip c-orta">Orta 4–8</span><span class="chip c-dus">Düşük 1–3</span></div>
+
+
+  <h2>Sorular</h2>
+  <ol class="q">
+    <li><div class="qt">En yüksek öncelikli senaryonuz hangisi? Bir cümleyle: neden bu?</div>
+      <div class="a"><b>R1</b>, çünkü bugün açık olan tek bir uzak erişim kapısından, operatörün her gün defalarca yaptığı bir işlem (takım değişimi) sırasında, ekranda hiçbir uyarı vermeden kalıcı el yaralanmasına giden kısa bir zincir.</div></li>
+
+    <li><div class="qt">S=3 olup skoru düşük kalan senaryonuz var mı? Nasıl görünür kılacaksınız?</div>
+      <div class="a">Evet, <b>R3</b> (skor 3, Düşük). Çarpım sonucu düşük çıkıyor ama gerçekleştiğinde acil durdurma, yani son savunma hattı çalışmıyor. Görünür kılmak için:
+        <ul>
+          <li>Risk Register'da ayrı bir <b>"S=3" sütunu</b> açılır. Bu satır skora bakılmaksızın en az <b>Yüksek</b> öncelik kategorisinde listelenir.</li>
+          <li>Senaryo, LAB 4'teki <b>emniyet bağımsızlığı gereksinimine</b> doğrudan bağlanır: acil stop, CNC yazılımından bağımsız ve donanımsal çalışmalıdır.</li>
+          <li>Acil stop'un CNC kartı üzerinden mi yoksa emniyet rölesi üzerinden mi çalıştığı kablaj kontrolüyle doğrulanır ve her vardiya başında test edilir. Satır, bağımsızlık kanıtlanana kadar kapatılmaz.</li>
+        </ul></div></li>
+  </ol>
+
+  <div class="foot">Bu föyün çıktısı <b>Risk Register</b> → Evidence Pack <b>EP 04 Risk Assessment</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> LAB 1 Safety Architecture ve LAB 2 IEC 62443 Mini Workshop — Drachen 2128 Hyper · EN ISO 12100 (risk değerlendirmesi) · IEC 62443-3-2 (siber güvenlik risk değerlendirmesi).</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 3</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#1b2742 0%,#16525a 65%,#3f8f8a 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--teal)}
+  .box b.k{color:var(--teal-d)}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 9px;font-weight:700}
+  td{border:1px solid var(--line);padding:7px 9px;vertical-align:top}
+  td:first-child{font-weight:700}
+  .assets{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:#f6f8fb}
+  .assets h3{font-family:"Noto Serif",serif;font-size:15px;margin:0 0 6px}
+  .assets p{margin:0;font-size:13px}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--teal-d);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:2px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta{grid-template-columns:1fr}
+    table{display:block;overflow-x:auto}
+  }
+  @media print{
+    body{background:#fff} .page{box-shadow:none;margin:0;max-width:none}
+    header,th,.box,.assets{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li,table{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+    .pb{break-before:page;page-break-before:always}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 2 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>IEC 62443 Mini Workshop</h1>
+  <div class="out">Çıktı: Zone / Conduit Diagram</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad: Emirhan Bayrak</div>
+    <div>Grup: Gündüz</div>
+    <div>Tarih: 25.10.2026</div>
+  </div>
+
+  <div class="box"><b class="k">Kavram: Zone</b> = benzer kritiklikteki cihazları bir bölgeye topla. <b class="k">Conduit</b> = bölgeler arası her geçişe kontrollü bir kapı. 62443'ün maddesini ezberlemiyoruz — mantığını uyguluyoruz. Her zone için bir hedef güvenlik seviyesi (<b class="k">SL-T</b>, 1–4) belirlenir; kritiklik arttıkça hedef yükselir.</div>
+
+  <h2>Görev A — varlıkları bölgelere ayırın</h2>
+  <div class="assets">
+    <h3>Varlık listesi — Drachen 2128 Hyper</h3>
+    <p>CNC kontrol / hareket kartı · CNC PC + operatör paneli (HMI) · X/Y/Z servo sürücüler · Spindle inverter (VFD) · <b>Emniyet rölesi / Safety PLC</b> · CAM / nesting istasyonu (mühendislik istasyonu) · G-kodu dosya sunucusu / iş emri (SCADA/MES karşılığı) · Uzak servis erişimi (satıcı servisi) · Ofis ağı (ERP / e-posta)</p>
+    <p style="margin-top:6px;font-size:12px;color:var(--muted)">Genel föydeki "robot kontrolörü" bu makinede yoktur; hareketi servo sürücüler ve CNC kontrol yönetir.</p>
+  </div>
+
+  <ol class="q" style="margin-top:16px">
+    <li><div class="qt">Hangi varlıklar aynı bölgede? Bölgeleri adlandırıp gruplandırın.</div>
+      <div class="a"><ul>
+        <li><b>Z0 Emniyet zonu (SL-T 3):</b> Emniyet rölesi / Safety PLC, acil stop butonları, ışık perdesi veya basınç paspası, STO hatları, Z fren rölesi. İnsanı koruyan her şey burada.</li>
+        <li><b>Z1 Makine kontrol hücresi (SL-T 2):</b> CNC PC + operatör paneli, hareket kartı, X/Y/Z servo sürücüler, spindle inverter. Makineyi hareket ettiren ama emniyetten sorumlu olmayan cihazlar.</li>
+        <li><b>Z2 Üretim destek (SL-T 2):</b> CAM / nesting istasyonu ve G-kodu dosya sunucusu. G-kodunu üreten ve saklayan, makineyi doğrudan sürmeyen sistemler.</li>
+        <li><b>Z3 Uzak erişim DMZ (SL-T 3):</b> Jump server. Dışarıdan gelen her bağlantının durduğu tek nokta.</li>
+        <li><b>Z4 Kurumsal (SL-T 1):</b> ERP, e-posta, ofis bilgisayarları. İnternete en açık bölge.</li>
+      </ul></div></li>
+
+    <li><div class="qt">Safety PLC'yi hangi bölgeye koydunuz — neden?</div>
+      <div class="a">Kendi zonuna, <b>Z0 Emniyet zonuna</b>. Nedenleri:
+        <ul>
+          <li>LAB 1'de gördük: CNC PC Windows tabanlı, USB ve ağ ile dosya alıyor ve uzaktan servis ediliyor. Bu nedenle Z1 makinedeki en açık bölge. Emniyet rölesi Z1'de olursa, Z1'e giren bir saldırgan emniyet fonksiyonuna da ulaşır.</li>
+          <li>Emniyet fonksiyonları (SF1 acil durdurma, SF2 gantry algılama) donanımsal çalışmalıdır, ağa ihtiyaçları yoktur. Ağa bağlı olmayan bir cihaz ağdan saldırıya da uğramaz.</li>
+          <li>Z0 ile Z1 arasındaki tek geçiş (C4), emniyetten CNC'ye giden <b>tek yönlü</b> durum sinyalidir. CNC, "emniyet tetiklendi" bilgisini okuyup ekrana yazar ama emniyet devresine komut veremez.</li>
+          <li>Emniyet modülü programlanabilirse, konfigürasyon portu yalnızca yerinde, kilitli pano içinde ve servis bilgisayarıyla kullanılır. Değişiklik sağlama toplamı ile kaydedilir.</li>
+        </ul></div></li>
+
+    <li><div class="qt">Bölgeler arası geçişler (conduit) nerede? Her geçişte ne kontrol edilecek?</div>
+      <div class="a">Beş geçiş var. Ofisten makineye (Z4 → Z1) ve uzak erişimden emniyet zonuna (Z3 → Z0) doğrudan yol yoktur.
+        <ul>
+          <li><b>C1 · Ofis ↔ Üretim destek (Z4 ↔ Z2):</b> Yalnızca ERP'den gelen iş emri listesi geçer. Güvenlik duvarında "her şeyi engelle, yalnız gerekeni aç" kuralı uygulanır. E-posta ekleri doğrudan G-kodu olarak kullanılmaz.</li>
+          <li><b>C2 · Üretim destek → Makine (Z2 → Z1):</b> Yalnızca G-kodu / nesting dosyaları, tek yönde geçer. CNC PC dosyaları tek bir yalnız okunur klasörden alır. Her dosya virüs taramasından ve CAM istasyonundan geldiğini doğrulayan kontrolden (özet değeri / imza) geçer. CNC PC'de USB girişleri kapatılır ve CNC PC internete çıkamaz.</li>
+          <li><b>C3 · Uzak erişim DMZ → Makine (Z3 → Z1):</b> Servis için uzak masaüstü ve parametre erişimi. Yalnızca jump server üzerinden, talep edildiğinde açılır. Kişisel hesap, MFA ve oturum kaydı zorunludur. Hedef yalnızca CNC PC'dir; servo sürücü ve inverter parametre değişiklikleri kayıt altına alınır.</li>
+          <li><b>C4 · Emniyet → Makine (Z0 → Z1):</b> Ağ bağlantısı yoktur, yalnızca kablolu ve tek yönlü bir durum sinyali (emniyet tetiklendi / hazır) gider. Z1'den Z0'a komut, reset veya bypass gönderilemez. Reset yalnızca makine başındaki fiziksel butonla yapılır.</li>
+          <li><b>C5 · İnternet → Uzak erişim DMZ (Z3):</b> Servis firmasının bağlantısı. VPN + MFA, IP kısıtlaması ve varsayılan kapalı. Bağlantı jump server'da sonlanır, içeri doğrudan geçemez.</li>
+        </ul>
+      </div></li>
+  </ol>
+
+  <h2 class="pb">Görev B — uzak erişim kararı (6 satır)</h2>
+  <table>
+    <tr><th style="width:14%">Karar</th><th style="width:22%">Seçenekler</th><th>Seçiminiz + nedeni</th></tr>
+    <tr><td>Aracı?</td><td>Doğrudan / Jump server</td><td><b>Jump server.</b> Satıcının teknisyeni CNC PC'ye doğrudan bağlanırsa, teknisyenin bilgisayarına bulaşmış bir zararlı da doğrudan makineye ulaşır. Jump server (Z3) tek giriş noktasıdır; bağlantı orada durur, izlenir ve yalnızca CNC PC'ye yönlendirilir.</td></tr>
+    <tr><td>Tünel?</td><td>Açık / VPN</td><td><b>VPN.</b> Bu sınıf makinelerde servis genellikle CNC PC'ye kurulu uzak masaüstü yazılımıyla yapılır; bu, internete açık bir kapı demektir. VPN ile trafik şifrelenir ve yalnızca tanımlı kişiler bağlanabilir.</td></tr>
+    <tr><td>Kimlik?</td><td>Parola / MFA</td><td><b>MFA.</b> Parola çalınırsa saldırgan, servo sürücü ve inverter parametrelerini değiştirebilecek bir erişime sahip olur (LAB 1, soru 8: Z fren gecikmesi, spindle rampa süresi). İkinci faktör bu riski büyük ölçüde azaltır.</td></tr>
+    <tr><td>Hesap?</td><td>Paylaşılan / Kişisel</td><td><b>Kişisel.</b> Paylaşılan "servis" hesabında kimin hangi parametreyi değiştirdiği bilinemez. Kişisel hesapla her değişiklik bir kişiye bağlanır ve iş bitince yalnızca o hesap kapatılır.</td></tr>
+    <tr><td>Kayıt?</td><td>Yok / Tam oturum kaydı</td><td><b>Tam oturum kaydı.</b> Bir parametre değişikliği emniyeti etkileyebileceği için (örneğin Z fren gecikmesi) neyin değiştiği sonradan kanıtlanabilmelidir. Bu kayıt, LAB 6'daki olay müdahalesinde de kanıt olarak kullanılır.</td></tr>
+    <tr><td>Zamanlama?</td><td>Sürekli açık / Varsayılan kapalı</td><td><b>Varsayılan kapalı.</b> Servis yalnızca arıza veya güncelleme sırasında gerekir. Bağlantı, vardiya sorumlusunun onayıyla belirli bir süre için açılır ve süre bitince otomatik kapanır. Servis sırasında makine bakım moduna alınır ve yanında bir operatör bulunur.</td></tr>
+  </table>
+
+  <div class="foot">Bu föyün çıktısı <b>Zone / Conduit Diagram</b> → Evidence Pack <b>EP 05 Zone &amp; Conduit</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> IEC 62443-3-2 (zone/conduit ve risk değerlendirmesi) · IEC 62443-3-3 (sistem güvenlik gereksinimleri ve güvenlik seviyeleri) · LAB 1 Safety Architecture — Drachen 2128 Hyper.</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 2</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#17213a 0%,#1f2d4a 65%,#33456b 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--navy)}
+  .box b.k{color:var(--teal-d)}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .col{border:1px solid var(--line);border-left:5px solid;border-radius:10px;padding:12px 16px;background:#f6f8fb}
+  .col h3{font-family:"Noto Serif",serif;font-size:15px;margin:0 0 6px}
+  .col.cur{border-left-color:var(--red)} .col.cur h3{color:var(--red)}
+  .col.tgt{border-left-color:var(--teal)} .col.tgt h3{color:var(--teal-d)}
+  .col ul{margin:0;padding-left:18px;font-size:13px} .col li{margin:4px 0}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:3px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta,.cols{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff} .page{box-shadow:none;margin:0;max-width:none}
+    header,.box,.col{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li,.col{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 4 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>Secure Remote Access</h1>
+  <div class="out">Çıktı: Secure Architecture</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad: Emirhan Bayrak</div>
+    <div>Grup: Gündüz</div>
+    <div>Tarih: 25.10.2026</div>
+  </div>
+
+  <div class="box"><b class="k">Kavram:</b> İki katman, ikisi de şart: <b class="k">erişim güvenliği</b> (girişi zorlaştır: ara nokta, VPN, MFA, kişisel hesap, kayıt, varsayılan kapalı) + <b class="k">emniyet bağımsızlığı</b> (girse bile insan korunur).</div>
+
+  <h2>Görev A — mevcut → hedef</h2>
+  <div class="cols">
+    <div class="col cur">
+      <h3>MEVCUT</h3>
+      <ul>
+        <li>Satıcı, servis için CNC PC'ye kurulu bir uzak masaüstü yazılımıyla <b>doğrudan</b> bağlanıyor; araya giren bir nokta yok.</li>
+        <li>CNC PC <b>doğrudan internete</b> açık; bağlantı şifreli tünel yerine açık bir kapı üzerinden geliyor.</li>
+        <li>Giriş yalnızca <b>parola</b> ile yapılıyor; parola yıllardır değişmemiş.</li>
+        <li>Satıcının tüm teknisyenleri aynı <b>paylaşılan "servis" hesabını</b> kullanıyor; hesap Windows yöneticisi yetkisinde.</li>
+        <li>Oturumların <b>kaydı yok</b>; servo sürücü ve inverter parametre değişiklikleri izlenmiyor.</li>
+        <li>Uzak erişim yazılımı <b>sürekli açık</b>, makine çalışırken de bağlantı kurulabiliyor.</li>
+        <li>Acil stop CNC kartı üzerinden işleniyor olabilir; bu durumda uzaktan giren kişi emniyete de ulaşır (LAB 3, R3).</li>
+      </ul>
+    </div>
+    <div class="col tgt">
+      <h3>HEDEF</h3>
+      <ul>
+        <li><b>Ara nokta:</b> Tüm servis bağlantıları uzak erişim DMZ'sindeki (Z3) jump server'da sonlanır; oradan yalnızca CNC PC'ye geçilir.</li>
+        <li><b>VPN:</b> Servis firması yalnızca VPN tüneliyle ve tanımlı IP adreslerinden bağlanır. CNC PC'deki uzak masaüstü yazılımı kaldırılır.</li>
+        <li><b>MFA:</b> Jump server girişinde parola + ikinci faktör zorunludur.</li>
+        <li><b>Kişisel hesap:</b> Her teknisyenin kendi hesabı vardır, en az yetkiyle çalışır; iş bitince hesap kapatılır.</li>
+        <li><b>Kayıt:</b> Her oturum baştan sona kaydedilir; parametre değişiklikleri önce/sonra değerleriyle loglanır.</li>
+        <li><b>Varsayılan kapalı:</b> Erişim vardiya sorumlusunun onayıyla, belirli bir süre için açılır ve süre bitince otomatik kapanır. Servis sırasında makine bakım modundadır.</li>
+        <li><b>Emniyet bağımsızlığı:</b> Emniyet zinciri (Z0) ağdan ayrıdır; uzaktan erişilebilen hiçbir sistem emniyete komut veremez.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Görev B — functional safety köprüsü</h2>
+  <ol class="q">
+    <li><div class="qt">Saldırgan tüm önlemlere rağmen içeri girerse: emniyet fonksiyonu etkilenir mi? Neden?</div>
+      <div class="a">Hedef mimaride <b>acil durdurma (SF1), gantry kişi algılama (SF2) ve Z freni (SF3) etkilenmez</b>. Bu fonksiyonlar emniyet rölesi / Safety PLC üzerinden donanımsal çalışır ve CNC PC ile aralarında ağ bağlantısı yoktur. Saldırgan CNC PC'yi ele geçirse bile makineyi yalnızca durdurabilir, üretimi bozabilir veya hatalı parça kestirebilir; acil stop'a basıldığında STO yine tetiklenir.
+        <ul>
+          <li><b>İstisna 1 — mevcut durum:</b> Acil stop yalnızca CNC kartına bağlıysa SF1 de yazılıma bağımlıdır ve etkilenir (LAB 3, R3). Bu yüzden bağımsızlık kablaj kontrolüyle kanıtlanmalıdır.</li>
+          <li><b>İstisna 2 — spindle durması:</b> Spindle'ın ne kadar sürede durduğu inverter parametresine bağlıdır. Saldırgan bu parametreyi değiştirirse spindle dururken uzun süre dönmeye devam eder (LAB 3, R1). Spindle durma izleme (SF4) inverterden bağımsız değilse etkilenir.</li>
+        </ul></div></li>
+
+    <li><div class="qt">Emniyet fonksiyonunun kontrol sisteminden bağımsız çalışması için GEREKSİNİMİ yazın (çözümü değil).</div>
+      <div class="a"><ul>
+        <li><b>GR1:</b> Emniyet fonksiyonları (SF1–SF5), CNC PC'nin, hareket kartının veya ağın arızalanması, kapanması ya da ele geçirilmesi durumunda da çalışmaya devam <b>etmelidir</b>.</li>
+        <li><b>GR2:</b> Kontrol sisteminden veya ağdan emniyet zincirine komut, reset, bypass ya da parametre değişikliği <b>gönderilememelidir</b>. Emniyetten kontrol sistemine yalnızca durum bilgisi akmalıdır.</li>
+        <li><b>GR3:</b> Spindle'ın durduğu bilgisi, inverterin ayarlanabilir parametrelerinden <b>bağımsız</b> olarak doğrulanmalıdır.</li>
+        <li><b>GR4:</b> Z ekseni, sürücü parametrelerinden bağımsız olarak, enerji kesildiğinde <b>tutulmalıdır</b>.</li>
+        <li><b>GR5:</b> Emniyet konfigürasyonu yalnızca yerinde ve yetkili kişi tarafından değiştirilebilmeli; her değişiklik tespit edilebilmeli ve ardından doğrulama testi yapılmalıdır.</li>
+        <li><b>GR6:</b> Emniyet fonksiyonundaki bir arıza, makineyi her zaman güvenli duruma götürmeli ve LAB 1'de belirlenen performans seviyesi (PL d) karşılanmalıdır.</li>
+      </ul></div></li>
+  </ol>
+
+  <div class="foot">Bu föyün çıktısı <b>Secure Architecture</b> → Evidence Pack <b>EP 02 + EP 06</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> LAB 1–3 — Drachen 2128 Hyper · IEC 62443-3-3 (SR 1.13 güvenilmeyen ağlardan erişim, SR 2.8 denetlenebilir olaylar) · EN ISO 13849-1 (emniyetle ilgili kontrol sistemleri).</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 4</span></div>
+</div>
+</body>
+</html>
