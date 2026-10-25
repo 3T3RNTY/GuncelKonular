@@ -82,19 +82,19 @@
         <li>Satıcının tüm teknisyenleri aynı <b>paylaşılan "servis" hesabını</b> kullanıyor; hesap Windows yöneticisi yetkisinde.</li>
         <li>Oturumların <b>kaydı yok</b>; servo sürücü ve inverter parametre değişiklikleri izlenmiyor.</li>
         <li>Uzak erişim yazılımı <b>sürekli açık</b>, makine çalışırken de bağlantı kurulabiliyor.</li>
-        <li>Acil stop CNC kartı üzerinden işleniyor olabilir; bu durumda uzaktan giren kişi emniyete de ulaşır (LAB 3, R3).</li>
+        <li>Acil stop CNC kartı üzerinden işleniyor olabilir; bu durumda uzaktan giren kişi emniyete de ulaşır.</li>
       </ul>
     </div>
     <div class="col tgt">
       <h3>HEDEF</h3>
       <ul>
-        <li><b>Ara nokta:</b> Tüm servis bağlantıları uzak erişim DMZ'sindeki (Z3) jump server'da sonlanır; oradan yalnızca CNC PC'ye geçilir.</li>
+        <li><b>Ara nokta:</b> Tüm servis bağlantıları uzak erişim DMZ'sindeki jump server'da sonlanır; oradan yalnızca CNC PC'ye geçilir.</li>
         <li><b>VPN:</b> Servis firması yalnızca VPN tüneliyle ve tanımlı IP adreslerinden bağlanır. CNC PC'deki uzak masaüstü yazılımı kaldırılır.</li>
         <li><b>MFA:</b> Jump server girişinde parola + ikinci faktör zorunludur.</li>
         <li><b>Kişisel hesap:</b> Her teknisyenin kendi hesabı vardır, en az yetkiyle çalışır; iş bitince hesap kapatılır.</li>
         <li><b>Kayıt:</b> Her oturum baştan sona kaydedilir; parametre değişiklikleri önce/sonra değerleriyle loglanır.</li>
         <li><b>Varsayılan kapalı:</b> Erişim vardiya sorumlusunun onayıyla, belirli bir süre için açılır ve süre bitince otomatik kapanır. Servis sırasında makine bakım modundadır.</li>
-        <li><b>Emniyet bağımsızlığı:</b> Emniyet zinciri (Z0) ağdan ayrıdır; uzaktan erişilebilen hiçbir sistem emniyete komut veremez.</li>
+        <li><b>Emniyet bağımsızlığı:</b> Emniyet zinciri ağdan ayrıdır; uzaktan erişilebilen hiçbir sistem emniyete komut veremez.</li>
       </ul>
     </div>
   </div>
@@ -104,24 +104,24 @@
     <li><div class="qt">Saldırgan tüm önlemlere rağmen içeri girerse: emniyet fonksiyonu etkilenir mi? Neden?</div>
       <div class="a">Hedef mimaride <b>acil durdurma (SF1), gantry kişi algılama (SF2) ve Z freni (SF3) etkilenmez</b>. Bu fonksiyonlar emniyet rölesi / Safety PLC üzerinden donanımsal çalışır ve CNC PC ile aralarında ağ bağlantısı yoktur. Saldırgan CNC PC'yi ele geçirse bile makineyi yalnızca durdurabilir, üretimi bozabilir veya hatalı parça kestirebilir; acil stop'a basıldığında STO yine tetiklenir.
         <ul>
-          <li><b>İstisna 1 — mevcut durum:</b> Acil stop yalnızca CNC kartına bağlıysa SF1 de yazılıma bağımlıdır ve etkilenir (LAB 3, R3). Bu yüzden bağımsızlık kablaj kontrolüyle kanıtlanmalıdır.</li>
-          <li><b>İstisna 2 — spindle durması:</b> Spindle'ın ne kadar sürede durduğu inverter parametresine bağlıdır. Saldırgan bu parametreyi değiştirirse spindle dururken uzun süre dönmeye devam eder (LAB 3, R1). Spindle durma izleme (SF4) inverterden bağımsız değilse etkilenir.</li>
+          <li><b>İstisna 1 — mevcut durum:</b> Acil stop yalnızca CNC kartına bağlıysa SF1 de yazılıma bağımlıdır ve etkilenir. Bu yüzden bağımsızlık kablaj kontrolüyle kanıtlanmalıdır.</li>
+          <li><b>İstisna 2 — spindle durması:</b> Spindle'ın ne kadar sürede durduğu inverter parametresine bağlıdır. Saldırgan bu parametreyi değiştirirse spindle dururken uzun süre dönmeye devam eder. Spindle durma izleme (SF4) inverterden bağımsız değilse etkilenir.</li>
         </ul></div></li>
 
     <li><div class="qt">Emniyet fonksiyonunun kontrol sisteminden bağımsız çalışması için GEREKSİNİMİ yazın (çözümü değil).</div>
       <div class="a"><ul>
-        <li><b>GR1:</b> Emniyet fonksiyonları (SF1–SF5), CNC PC'nin, hareket kartının veya ağın arızalanması, kapanması ya da ele geçirilmesi durumunda da çalışmaya devam <b>etmelidir</b>.</li>
+        <li><b>GR1:</b> Emniyet fonksiyonları (acil durdurma, kişi algılama, Z freni, spindle durma izleme, vakum izleme), CNC PC'nin, hareket kartının veya ağın arızalanması, kapanması ya da ele geçirilmesi durumunda da çalışmaya devam <b>etmelidir</b>.</li>
         <li><b>GR2:</b> Kontrol sisteminden veya ağdan emniyet zincirine komut, reset, bypass ya da parametre değişikliği <b>gönderilememelidir</b>. Emniyetten kontrol sistemine yalnızca durum bilgisi akmalıdır.</li>
         <li><b>GR3:</b> Spindle'ın durduğu bilgisi, inverterin ayarlanabilir parametrelerinden <b>bağımsız</b> olarak doğrulanmalıdır.</li>
         <li><b>GR4:</b> Z ekseni, sürücü parametrelerinden bağımsız olarak, enerji kesildiğinde <b>tutulmalıdır</b>.</li>
         <li><b>GR5:</b> Emniyet konfigürasyonu yalnızca yerinde ve yetkili kişi tarafından değiştirilebilmeli; her değişiklik tespit edilebilmeli ve ardından doğrulama testi yapılmalıdır.</li>
-        <li><b>GR6:</b> Emniyet fonksiyonundaki bir arıza, makineyi her zaman güvenli duruma götürmeli ve LAB 1'de belirlenen performans seviyesi (PL d) karşılanmalıdır.</li>
+        <li><b>GR6:</b> Emniyet fonksiyonundaki bir arıza, makineyi her zaman güvenli duruma götürmeli ve gerekli performans seviyesi (PL d) karşılanmalıdır.</li>
       </ul></div></li>
   </ol>
 
   <div class="foot">Bu föyün çıktısı <b>Secure Architecture</b> → Evidence Pack <b>EP 02 + EP 06</b> başlığına oturur.</div>
 
-  <p class="refs"><b>Kaynaklar:</b> LAB 1–3 — Drachen 2128 Hyper · IEC 62443-3-3 (SR 1.13 güvenilmeyen ağlardan erişim, SR 2.8 denetlenebilir olaylar) · EN ISO 13849-1 (emniyetle ilgili kontrol sistemleri).</p>
+  <p class="refs"><b>Kaynaklar:</b> IEC 62443-3-3 (SR 1.13 güvenilmeyen ağlardan erişim, SR 2.8 denetlenebilir olaylar) · EN ISO 13849-1 (emniyetle ilgili kontrol sistemleri).</p>
 </main>
 <div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 4</span></div>
 </div>

@@ -94,8 +94,8 @@
     <li><div class="qt">Safety PLC'yi hangi bölgeye koydunuz — neden?</div>
       <div class="a">Kendi zonuna, <b>Z0 Emniyet zonuna</b>. Nedenleri:
         <ul>
-          <li>LAB 1'de gördük: CNC PC Windows tabanlı, USB ve ağ ile dosya alıyor ve uzaktan servis ediliyor. Bu nedenle Z1 makinedeki en açık bölge. Emniyet rölesi Z1'de olursa, Z1'e giren bir saldırgan emniyet fonksiyonuna da ulaşır.</li>
-          <li>Emniyet fonksiyonları (SF1 acil durdurma, SF2 gantry algılama) donanımsal çalışmalıdır, ağa ihtiyaçları yoktur. Ağa bağlı olmayan bir cihaz ağdan saldırıya da uğramaz.</li>
+          <li>CNC PC Windows tabanlı, USB ve ağ ile dosya alıyor ve uzaktan servis ediliyor. Bu nedenle Z1 makinedeki en açık bölge. Emniyet rölesi Z1'de olursa, Z1'e giren bir saldırgan emniyet fonksiyonuna da ulaşır.</li>
+          <li>Emniyet fonksiyonları (acil durdurma, gantry çevresinde kişi algılama) donanımsal çalışmalıdır, ağa ihtiyaçları yoktur. Ağa bağlı olmayan bir cihaz ağdan saldırıya da uğramaz.</li>
           <li>Z0 ile Z1 arasındaki tek geçiş (C4), emniyetten CNC'ye giden <b>tek yönlü</b> durum sinyalidir. CNC, "emniyet tetiklendi" bilgisini okuyup ekrana yazar ama emniyet devresine komut veremez.</li>
           <li>Emniyet modülü programlanabilirse, konfigürasyon portu yalnızca yerinde, kilitli pano içinde ve servis bilgisayarıyla kullanılır. Değişiklik sağlama toplamı ile kaydedilir.</li>
         </ul></div></li>
@@ -117,15 +117,15 @@
     <tr><th style="width:14%">Karar</th><th style="width:22%">Seçenekler</th><th>Seçiminiz + nedeni</th></tr>
     <tr><td>Aracı?</td><td>Doğrudan / Jump server</td><td><b>Jump server.</b> Satıcının teknisyeni CNC PC'ye doğrudan bağlanırsa, teknisyenin bilgisayarına bulaşmış bir zararlı da doğrudan makineye ulaşır. Jump server (Z3) tek giriş noktasıdır; bağlantı orada durur, izlenir ve yalnızca CNC PC'ye yönlendirilir.</td></tr>
     <tr><td>Tünel?</td><td>Açık / VPN</td><td><b>VPN.</b> Bu sınıf makinelerde servis genellikle CNC PC'ye kurulu uzak masaüstü yazılımıyla yapılır; bu, internete açık bir kapı demektir. VPN ile trafik şifrelenir ve yalnızca tanımlı kişiler bağlanabilir.</td></tr>
-    <tr><td>Kimlik?</td><td>Parola / MFA</td><td><b>MFA.</b> Parola çalınırsa saldırgan, servo sürücü ve inverter parametrelerini değiştirebilecek bir erişime sahip olur (LAB 1, soru 8: Z fren gecikmesi, spindle rampa süresi). İkinci faktör bu riski büyük ölçüde azaltır.</td></tr>
+    <tr><td>Kimlik?</td><td>Parola / MFA</td><td><b>MFA.</b> Parola çalınırsa saldırgan, servo sürücü ve inverter parametrelerini değiştirebilecek bir erişime sahip olur (örneğin Z fren gecikmesi, spindle rampa süresi). İkinci faktör bu riski büyük ölçüde azaltır.</td></tr>
     <tr><td>Hesap?</td><td>Paylaşılan / Kişisel</td><td><b>Kişisel.</b> Paylaşılan "servis" hesabında kimin hangi parametreyi değiştirdiği bilinemez. Kişisel hesapla her değişiklik bir kişiye bağlanır ve iş bitince yalnızca o hesap kapatılır.</td></tr>
-    <tr><td>Kayıt?</td><td>Yok / Tam oturum kaydı</td><td><b>Tam oturum kaydı.</b> Bir parametre değişikliği emniyeti etkileyebileceği için (örneğin Z fren gecikmesi) neyin değiştiği sonradan kanıtlanabilmelidir. Bu kayıt, LAB 6'daki olay müdahalesinde de kanıt olarak kullanılır.</td></tr>
+    <tr><td>Kayıt?</td><td>Yok / Tam oturum kaydı</td><td><b>Tam oturum kaydı.</b> Bir parametre değişikliği emniyeti etkileyebileceği için (örneğin Z fren gecikmesi) neyin değiştiği sonradan kanıtlanabilmelidir. Bu kayıt, olası bir siber olayda kanıt olarak da kullanılır.</td></tr>
     <tr><td>Zamanlama?</td><td>Sürekli açık / Varsayılan kapalı</td><td><b>Varsayılan kapalı.</b> Servis yalnızca arıza veya güncelleme sırasında gerekir. Bağlantı, vardiya sorumlusunun onayıyla belirli bir süre için açılır ve süre bitince otomatik kapanır. Servis sırasında makine bakım moduna alınır ve yanında bir operatör bulunur.</td></tr>
   </table>
 
   <div class="foot">Bu föyün çıktısı <b>Zone / Conduit Diagram</b> → Evidence Pack <b>EP 05 Zone &amp; Conduit</b> başlığına oturur.</div>
 
-  <p class="refs"><b>Kaynaklar:</b> IEC 62443-3-2 (zone/conduit ve risk değerlendirmesi) · IEC 62443-3-3 (sistem güvenlik gereksinimleri ve güvenlik seviyeleri) · LAB 1 Safety Architecture — Drachen 2128 Hyper.</p>
+  <p class="refs"><b>Kaynaklar:</b> IEC 62443-3-2 (zone/conduit ve risk değerlendirmesi) · IEC 62443-3-3 (sistem güvenlik gereksinimleri ve güvenlik seviyeleri).</p>
 </main>
 <div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 2</span></div>
 </div>
