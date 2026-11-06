@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#1b2742 0%,#6b5320 60%,#b38a3c 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--amber)}
+  .box b.k{color:var(--teal-d)}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  td{border:1px solid var(--line);padding:8px 10px;vertical-align:top}
+  td:first-child{font-weight:700;width:26%}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--amber);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:3px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta{grid-template-columns:1fr} td:first-child{width:auto}
+  }
+  @media print{
+    body{background:#fff;font-size:13px;line-height:1.45} .page{box-shadow:none;margin:0;max-width:none}
+    @page{margin:12mm 10mm}
+    h2{margin:12px 0 6px} td{padding:6px 8px} ol.q>li{padding-bottom:8px;margin-bottom:8px}
+    main{padding-bottom:4px} .box,.foot{margin:8px 0} .refs{margin:6px 0 0} .pf{padding:4px 0 0}
+    header,.box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li,table{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 5 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>SBOM / CVE / Patch</h1>
+  <div class="out">Çıktı: Vulnerability Decision</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad: Emirhan Bayrak</div>
+    <div>Grup: Gündüz</div>
+    <div>Tarih: 06.11.2026</div>
+  </div>
+
+  <div class="box"><b class="k">Kavram: SBOM</b> = yazılım malzeme listesi · <b class="k">CVE</b> = açığın kayıt no'su · <b class="k">CVSS</b> = ciddiyet (0–10). Bir CVE sizi etkiler mi? Üç şart: bileşen <b class="k">var</b>, sürüm <b class="k">etkileniyor</b>, açık <b class="k">ulaşılabilir</b>.</div>
+
+  <h2>Verilen zafiyet kaydı</h2>
+  <table>
+    <tr><td>Bileşen</td><td>Component X (CNC kontrol yazılımı / hareket kartı firmware kütüphanesi)</td></tr>
+    <tr><td>Sürüm</td><td>2.4</td></tr>
+    <tr><td>CVE</td><td>CVE-XXXX-XXXX</td></tr>
+    <tr><td>Önem</td><td>Critical (CVSS 9.8)</td></tr>
+    <tr><td>Yama</td><td>Mevcut</td></tr>
+  </table>
+
+  <h2>Görev — karar akışı</h2>
+  <ol class="q">
+    <li><div class="qt">Bu CVE sizi gerçekten etkiliyor mu? (üç şartı kontrol edin)</div>
+      <div class="a"><ul>
+        <li><b>Bileşen var mı?</b> Makinenin SBOM'u yoksa satıcıdan istenir; beklerken CNC PC'deki kurulu yazılım listesine ve hareket kartının firmware bilgisine bakılır. Component X kontrol yazılımının içinde geliyorsa şart sağlanır.</li>
+        <li><b>Sürüm etkileniyor mu?</b> Makinedeki sürüm 2.4; CVE kaydındaki etkilenen sürüm aralığıyla karşılaştırılır. 2.4 bu aralıktaysa şart sağlanır.</li>
+        <li><b>Açık ulaşılabilir mi?</b> CVSS 9.8 genellikle ağ üzerinden, kimlik doğrulama olmadan istismar anlamına gelir. CNC PC atölye ağına ve uzak servis bağlantısına açıksa açık ulaşılabilirdir. CNC PC hiçbir ağa bağlı değilse ve USB kapalıysa ulaşılabilirlik düşer.</li>
+      </ul><b>Sonuç:</b> Üç şart birlikte sağlanıyorsa CVE bu makineyi gerçekten etkiler. Biri bile sağlanmıyorsa kayıt "etkilenmiyor" gerekçesiyle kapatılır ve gerekçe saklanır.</div></li>
+
+    <li><div class="qt">Üretimi hemen durdurur musunuz? Neden / neden değil?</div>
+      <div class="a"><b>Hayır, otomatik olarak durdurmam; önce açığa giden yolu kapatırım.</b> CVE, CNC kontrol yazılımını etkiliyor; makineyi yanlış çalıştırabilir ama emniyet fonksiyonları (acil durdurma, Z freni, kişi algılama) emniyet rölesi üzerinden donanımsal çalışıyorsa insanı korumaya devam eder. Bu yüzden hemen CNC PC'nin ağ bağlantısı kesilir, uzak erişim kapatılır ve USB girişleri engellenir; üretim bu şekilde sürebilir.
+        <ul>
+          <li><b>Durdururum, eğer:</b> açığın aktif olarak istismar edildiğine dair işaret varsa (beklenmeyen parametre değişikliği, tanımadık bağlantı) ya da acil stop yalnızca CNC kartı üzerinden çalışıyorsa. Bu durumda yazılımdaki açık doğrudan emniyeti etkiler.</li>
+        </ul></div></li>
+
+    <li><div class="qt">Yamayı doğrudan mı uygularsınız, önce test mi? Nerede test?</div>
+      <div class="a"><b>Önce test.</b> Yama, eksen hareketini yöneten yazılımı değiştirir; test edilmeden uygulanırsa makine beklenmedik şekilde hareket edebilir.
+        <ul>
+          <li><b>Nerede:</b> Varsa aynı sürüme sahip yedek kontrol bilgisayarı ve hareket kartından oluşan bir test düzeneğinde. Yoksa makinenin kendisinde, üretim dışı planlı bir bakım penceresinde, tabla boşken.</li>
+          <li><b>Öncesinde:</b> CNC yazılım ayarlarının, servo sürücü ve inverter parametrelerinin tam yedeği alınır; satıcıdan yamanın uyumluluk onayı istenir; geri dönüş planı hazırlanır.</li>
+          <li><b>Test:</b> Eksenlerin referansa gitmesi, yazılım limitleri, boşta deneme programı, ardından hurda levhada deneme kesimi ve acil stop testi.</li>
+        </ul></div></li>
+
+    <li><div class="qt">Bu yama bir safety validation etkiliyor mu? Nasıl anlarsınız?</div>
+      <div class="a">Yama yalnızca CNC kontrol yazılımını değiştiriyorsa ve emniyet zinciri bu yazılımdan bağımsızsa <b>emniyet doğrulamasını doğrudan etkilemez</b>. Yama emniyet rölesine / Safety PLC'ye, servo sürücülerin STO veya fren fonksiyonuna ya da acil stop'un işlendiği bir girişe dokunuyorsa <b>etkiler</b> ve ilgili emniyet fonksiyonları yeniden doğrulanır. Nasıl anlaşılır:
+        <ul>
+          <li>Yama notları ve satıcının etki analizi incelenir: hangi bileşenler ve fonksiyonlar değişiyor?</li>
+          <li>Yama öncesi ve sonrası servo sürücü, inverter ve emniyet konfigürasyonu karşılaştırılır; emniyet konfigürasyonunun sağlama toplamı değişmişse doğrulama zorunludur.</li>
+          <li>Değişmemiş görünse bile yamadan sonra acil stop, Z freni ve spindle duruş süresi fonksiyon testleri yapılır ve kayda geçer.</li>
+        </ul></div></li>
+
+    <li><div class="qt">Yama mümkün değilse compensating control (telafi edici önlem) ne olur?</div>
+      <div class="a"><ul>
+        <li>CNC PC internetten ve ofis ağından tamamen ayrılır; G-kodu yalnızca tek yönlü, kontrollü bir klasörden alınır.</li>
+        <li>Açığın kullandığı ağ servisi / portu güvenlik duvarında kapatılır.</li>
+        <li>Uzak erişim varsayılan olarak kapalı tutulur; yalnızca onayla, kayıt altında ve kısa süreli açılır.</li>
+        <li>USB girişleri kapatılır, CNC PC'de yalnızca onaylı uygulamaların çalışmasına izin verilir.</li>
+        <li>Parametre değişiklikleri ve bağlantılar izlenir; düzenli olarak referans yedekle karşılaştırılır.</li>
+        <li>Acil stop ve Z freni testleri sıklaştırılır.</li>
+        <li>Karar, gerekçesi ve yamanın uygulanacağı hedef tarihle birlikte zafiyet kaydına yazılır.</li>
+      </ul></div></li>
+  </ol>
+
+  <div class="foot">Bu föyün çıktısı <b>Vulnerability Decision</b> → Evidence Pack <b>EP 09 · 10 · 11</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> IEC 62443-2-3 (OT ortamında yama yönetimi) · IEC 62443-3-3 · EN ISO 13849-2 (doğrulama) · EU 2024/2847 Siber Dayanıklılık Yasası (CRA).</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 5</span></div>
+</div>
+</body>
+</html>

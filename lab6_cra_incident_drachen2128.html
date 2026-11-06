@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#1b2742 0%,#5e2330 60%,#9a4848 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--red)}
+  .box.sc{background:#fbe9e6}
+  .box b.k{color:var(--teal-d)}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:3px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff;font-size:13px;line-height:1.45} .page{box-shadow:none;margin:0;max-width:none}
+    @page{margin:12mm 10mm}
+    h2{margin:12px 0 6px} td{padding:6px 8px} ol.q>li{padding-bottom:8px;margin-bottom:8px}
+    main{padding-bottom:4px} .box,.foot{margin:8px 0} .refs{margin:6px 0 0} .pf{padding:4px 0 0}
+    header,.box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 6 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>CRA Incident Simulation</h1>
+  <div class="out">Çıktı: Incident Workflow</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad: Emirhan Bayrak</div>
+    <div>Grup: Gündüz</div>
+    <div>Tarih: 06.11.2026</div>
+  </div>
+
+  <div class="box sc"><b>Senaryo:</b> Saat <b>10:15</b>. Drachen 2128 Hyper'ın CNC PC'sinde, satıcının uzak servis hesabıyla yetkisiz erişim tespit edildi. CNC yazılım ayarları ile servo sürücü / spindle inverter parametreleri değişmiş olabilir. Makine hâlâ çalışıyor. Vardiya sorumlusu sizsiniz.</div>
+
+  <div class="box"><b class="k">Kavram:</b> Bir olayda en değerli iki şey <b class="k">zaman</b> ve <b class="k">kanıt</b>tır. CRA'nın 24s / 72s / 14 gün yükümlülükleri, iyi bir müdahale akışının doğal kilometre taşlarıdır — ezber değil.</div>
+
+  <h2>Görev — zaman çizgisini doldurun</h2>
+  <ol class="q">
+    <li><div class="qt">10:15 — ilk 15 dk: Kimi ararsınız? İlk üç eyleminiz?</div>
+      <div class="a"><b>Kimi ararım:</b> Bakım / otomasyon sorumlusu, BT-OT güvenlik sorumlusu, İSG uzmanı ve üretim müdürü. Satıcı (Türkoğlu Makine) aranarak 10:15'teki bağlantının kendi teknisyenlerine ait olup olmadığı sorulur.
+        <ul>
+          <li><b>1. Makineyi güvenli şekilde durdur:</b> Program kontrollü olarak durdurulur, spindle'ın tamamen durduğu gözle teyit edilir, kimse tabla bölgesine girmez. Parametreler değişmiş olabileceği için makineye güvenilmez. Makinenin enerjisi kesilmez, CNC PC kapatılmaz.</li>
+          <li><b>2. Saldırganın erişimini kes:</b> CNC PC'nin ağ kablosu çekilir veya güvenlik duvarında bağlantısı kapatılır; uzak erişim yazılımı devre dışı bırakılır.</li>
+          <li><b>3. Olay kaydını başlat:</b> Saat, kim neyi gördü, ekranda ne vardı; ekran fotoğrafları çekilir. Hiçbir ayar "düzeltilmez", hiçbir şey silinmez.</li>
+        </ul></div></li>
+
+    <li><div class="qt">İlk 2 saat: Emniyet güvende mi? Neyi korursunuz (kanıt!)? Hangi hesap kapatılır?</div>
+      <div class="a"><ul>
+        <li><b>Emniyet güvende mi:</b> Önce kanıt alınır, sonra makine boşken acil stop, Z freni, spindle duruş süresi ve kişi algılama fonksiyon testleri yapılır. Servo sürücü ve inverter parametreleri son onaylı yedekle karşılaştırılır. Bu kontroller bitmeden makine üretime alınmaz.</li>
+        <li><b>Korunan kanıtlar:</b> CNC PC'nin disk imajı (ve mümkünse bellek dökümü), uzak erişim yazılımının bağlantı kayıtları, Windows olay günlükleri, güvenlik duvarı / modem kayıtları, CNC yazılımının alarm ve olay geçmişi, sürücü ve inverter parametre dökümleri, son yüklenen G-kodu dosyaları ve tarihleri. Her kanıtın özet değeri (hash) alınır ve kimin aldığı yazılır.</li>
+        <li><b>Kapatılan hesap:</b> Ele geçirilen paylaşılan servis hesabı hemen devre dışı bırakılır. Aynı parolanın kullanıldığı tüm hesapların parolaları değiştirilir; satıcıdan teknisyen hesaplarını kişiselleştirmesi istenir.</li>
+      </ul></div></li>
+
+    <li><div class="qt">24 saat — CRA erken uyarı: Hangi bilgi hazır olmalı?</div>
+      <div class="a">CRA'da bildirim yükümlülüğü ürünün <b>üreticisindedir</b>; işletme olarak görevimiz, üreticinin bildirimi yapabilmesi için ona bilgiyi hızla iletmektir. Hazır olması gerekenler:
+        <ul>
+          <li>Etkilenen ürün: Drachen 2128 Hyper, CNC yazılımı ve firmware sürümleri.</li>
+          <li>Olayın ilk tespit zamanı ve kısa tanımı: servis hesabıyla yetkisiz uzak erişim, parametre değişikliği şüphesi.</li>
+          <li>Olayın kötü niyetli bir eylemden kaynaklandığına dair şüphe ve dayanağı.</li>
+          <li>Aynı makineyi kullanan başka işletmelerin veya ülkelerin etkilenme ihtimali (aynı servis hesabı başka müşterilerde de kullanılıyor olabilir).</li>
+          <li>Şu ana kadar alınan önlemler: makine durduruldu, erişim kesildi, hesap kapatıldı.</li>
+        </ul></div></li>
+
+    <li><div class="qt">72 saat — CRA bildirim: Kök neden, etki, önlem — kim ne yapıyor?</div>
+      <div class="a"><ul>
+        <li><b>Kök neden:</b> Tüm teknisyenlerin ortak kullandığı, MFA'sız servis hesabının parolası ele geçirildi; CNC PC'deki uzak masaüstü yazılımı sürekli açıktı.</li>
+        <li><b>Etki:</b> Hangi parametrelerin değiştiği (örneğin spindle duruş rampası, Z fren gecikmesi), emniyet fonksiyonlarının etkilenip etkilenmediği, üretim kaybı, yaralanma olup olmadığı.</li>
+        <li><b>Önlem:</b> Parametreler onaylı yedekten geri yüklendi ve fonksiyon testleri yapıldı; uzak erişim jump server + VPN + MFA + kişisel hesap ile yeniden kuruluyor.</li>
+        <li><b>Kim ne yapıyor:</b> BT-OT güvenlik sorumlusu teknik analizi ve kanıt incelemesini yürütür. Bakım ekibi parametreleri geri yükler ve testleri yapar. İSG uzmanı emniyetin doğrulandığını onaylar. Yönetim ve hukuk iletişimi ve yasal süreçleri yönetir. Üretici zafiyeti analiz eder, yetkili otoriteye bildirimi yapar ve diğer müşterilerini uyarır.</li>
+      </ul></div></li>
+
+    <li><div class="qt">14 gün — son rapor: Hangi loglar/kayıtlar korunmuş olmalı?</div>
+      <div class="a"><ul>
+        <li>Uzak erişim yazılımı, VPN ve güvenlik duvarı bağlantı kayıtları.</li>
+        <li>CNC PC'nin Windows güvenlik ve sistem olay günlükleri, disk imajı ve özet değerleri.</li>
+        <li>CNC yazılımının alarm / olay geçmişi ve son yüklenen G-kodu dosyaları.</li>
+        <li>Servo sürücü ve inverter parametrelerinin olay öncesi, olay anı ve geri yükleme sonrası dökümleri.</li>
+        <li>Emniyet fonksiyon testlerinin kayıtları ve imzaları.</li>
+        <li>Vardiya / olay defteri, dakika dakika zaman çizelgesi ve satıcıyla yapılan yazışmalar.</li>
+        <li>Alınan düzeltici önlemlerin ve yeniden üretime alma onayının kaydı.</li>
+      </ul></div></li>
+  </ol>
+
+  <div class="foot">Bu föyün çıktısı <b>Incident Workflow</b> → Evidence Pack <b>EP 13 Incident Response</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> EU 2024/2847 Siber Dayanıklılık Yasası (CRA), Madde 14 (bildirim yükümlülükleri) · IEC 62443-2-1 (olay müdahalesi) · EN ISO 13849-2 (doğrulama).</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 6</span></div>
+</div>
+</body>
+</html>
