@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drachen 2128 Hyper — LAB 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1f2d4a; --teal:#1a9c95; --teal-d:#137a74; --red:#b3261e; --orange:#e85a2c;
+    --amber:#e8a400; --purple:#7a55c0; --ink:#1f2933; --muted:#5b6675; --line:#d7dee8; --soft:#eef2f6; --paper:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf2;color:var(--ink);font:14px/1.55 Lato,system-ui,sans-serif}
+  .page{max-width:900px;margin:24px auto;background:var(--paper);box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  header{background:linear-gradient(110deg,#1b2742 0%,#3d3470 60%,#6f5aa8 100%);color:#fff;padding:28px 36px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .eyebrow{letter-spacing:.28em;font-size:11px;font-weight:700;text-transform:uppercase;opacity:.9}
+  h1{font-family:"Noto Serif",serif;font-size:30px;margin:6px 0 0}
+  .out{position:absolute;right:36px;bottom:28px;border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;z-index:1}
+  main{padding:24px 36px 32px}
+  .meta{display:grid;grid-template-columns:2fr 2fr 1fr;gap:24px;margin-bottom:18px}
+  .meta div{border-bottom:1px solid var(--line);padding-bottom:4px;font-size:12px;font-weight:700;color:var(--muted)}
+  .box{background:var(--soft);border-radius:10px;padding:14px 18px 14px 26px;position:relative;margin:14px 0}
+  .box:before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--purple)}
+  .box b.k{color:var(--teal-d)}
+  .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+  .n{border-radius:7px;padding:8px 14px;font-weight:700;font-size:12.5px;color:#fff;background:var(--teal)}
+  .n.ai{background:var(--amber);color:#3d2a00} .n.end{background:var(--navy)}
+  .arr{color:var(--muted);font-size:18px}
+  h2{font-family:"Noto Serif",serif;font-size:18px;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px;font-weight:700}
+  td{border:1px solid var(--line);padding:8px 10px;vertical-align:top}
+  td:first-child{width:24%}
+  ol.q{list-style:none;padding:0;margin:0;counter-reset:q}
+  ol.q>li{counter-increment:q;position:relative;padding:0 0 14px 44px;margin-bottom:14px;border-bottom:1px dashed #b9c4d3}
+  ol.q>li:before{content:counter(q);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--purple);color:#fff;font-weight:900;display:grid;place-items:center;font-family:"Noto Serif",serif}
+  .qt{font-weight:700;margin-bottom:4px}
+  .a ul{margin:4px 0;padding-left:18px} .a li{margin:3px 0}
+  .foot{border:1px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:18px;background:#f6f8fb}
+  .foot b{color:var(--teal-d)}
+  .pf{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin:0 36px;padding:10px 0 18px;font-size:11px;color:var(--muted)}
+  .refs{font-size:11.5px;color:var(--muted)}
+  @media (max-width:640px){
+    header,main{padding-left:16px;padding-right:16px} .pf{margin:0 16px}
+    .out{position:static;display:inline-block;margin-top:10px}
+    .meta{grid-template-columns:1fr} td:first-child{width:auto}
+  }
+  @media print{
+    body{background:#fff;font-size:13px;line-height:1.45} .page{box-shadow:none;margin:0;max-width:none}
+    @page{margin:12mm 10mm}
+    h2{margin:12px 0 6px} td{padding:6px 8px} ol.q>li{padding-bottom:8px;margin-bottom:8px}
+    main{padding-bottom:4px} .box,.foot{margin:8px 0} .refs{margin:6px 0 0} .pf{padding:4px 0 0}
+    header,th,.box,.n{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.q>li,table{break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="eyebrow">Laboratuvar 7 · Makineye Özel Sürüm · Drachen 2128 Hyper CNC Router</div>
+  <h1>AI Safety Challenge</h1>
+  <div class="out">Çıktı: AI Fail-Safe Decision</div>
+</header>
+<main>
+  <div class="meta">
+    <div>Ad Soyad: Emirhan Bayrak</div>
+    <div>Grup: Gündüz</div>
+    <div>Tarih: 13.11.2026</div>
+  </div>
+
+  <div class="box"><b class="k">Kavram — Prediction ≠ Safety:</b> Yapay zekâ bir karar üretir; güvenliği garanti eden mimari YZ'nin <b class="k">dışında</b> tanımlanmalıdır. Araçlar: fail-safe · human override · monitoring · confidence threshold · fallback.<br>Drachen 2128 Hyper'da standart olarak YZ yoktur; föy, makineye eklenecek kamera tabanlı bir kalite kontrol sistemi üzerinden cevaplanmıştır. Kamera kesilen parçayı inceler (kenar patlaması, ölçü hatası, eksik delik), YZ modeli parçaya OK / RED verir ve sonraki kesimler için ilerleme hızı ve devir önerir.</div>
+
+  <div class="flow">
+    <span class="n">Kamera</span><span class="arr">→</span>
+    <span class="n ai">YZ Modeli</span><span class="arr">→</span>
+    <span class="n">OK / RED</span><span class="arr">→</span>
+    <span class="n">Parametre (ilerleme / devir)</span><span class="arr">→</span>
+    <span class="n end">CNC Router</span>
+  </div>
+
+  <h2>Görev — üç başarısızlıkta güvenli davranış</h2>
+  <ol class="q">
+    <li><div class="qt">Model yanlış sınıflandırdı: Kusurlu parçaya OK verdi. Sistem ne yapmalı? İkinci kontrol / insan onayı var mı?</div>
+      <div class="a">Kusurlu bir parçanın OK alması bir <b>kalite</b> hatasıdır; insanı tehlikeye atmamalıdır. Bunun için YZ'nin kararı son karar olmamalıdır:
+        <ul>
+          <li><b>İkinci kontrol:</b> Ölçü ve delik konumları, nesting planındaki değerlerle kural tabanlı bir ölçüm kontrolünden de geçer. YZ ile kural tabanlı kontrol çelişirse parça RED sayılır.</li>
+          <li><b>İnsan onayı:</b> Operatör her partiden düzenli aralıklarla numune parçayı elle kontrol eder. Kaçan kusur bulunursa parti ayrılır ve model yeniden değerlendirilir.</li>
+          <li><b>Parametre sınırı:</b> YZ'nin önerdiği ilerleme hızı ve devir, takım üreticisinin onayladığı sabit aralığın dışına çıkamaz. Yanlış bir öneri takımı kırabilecek bir değere ulaşamaz.</li>
+          <li>YZ hiçbir zaman acil durdurma, kişi algılama veya Z freni gibi emniyet fonksiyonlarına bağlanmaz.</li>
+        </ul></div></li>
+
+    <li><div class="qt">Girdi manipüle edildi: Kamera verisi bozuk/sahte. Nasıl fark edilir? Şüpheli girdide ne yapılır?</div>
+      <div class="a"><b>Nasıl fark edilir:</b>
+        <ul>
+          <li>Kare sayacı ve zaman damgası ilerlemiyorsa veya aynı görüntü tekrar ediyorsa akış donmuş ya da tekrar oynatılıyordur.</li>
+          <li>Görüntü kalitesi kontrolleri: bulanıklık, aşırı karanlık / parlaklık, eksik kare.</li>
+          <li>Görüntüdeki parçanın şekli, o anda kesilen nesting planındaki parçayla uyuşmuyorsa girdi şüphelidir.</li>
+          <li>Kameranın kimliği doğrulanır ve görüntü akışı yalnızca tanımlı kameradan kabul edilir.</li>
+        </ul>
+        <b>Şüpheli girdide:</b> YZ kararı devre dışı kalır; ilerleme ve devir son onaylı değerlere sabitlenir; o andan itibaren kesilen parçalar ayrılıp elle kontrol edilir; alarm verilir ve olay kaydedilir. Kamera bağlantısı incelenene kadar sistem yalnızca kural tabanlı kontrolle çalışır.</div></li>
+
+    <li><div class="qt">Confidence düştü: Model "emin değilim" diyor. Eşik ne olmalı? Altında: dur / insana sor / fallback?</div>
+      <div class="a">Üç kademeli bir eşik kullanılır. Değerler, makinede kesilmiş gerçek parçalarla yapılan denemelerle doğrulanır.
+        <ul>
+          <li><b>Güven ≥ %95:</b> Karar otomatik uygulanır.</li>
+          <li><b>%80–95 arası — insana sor:</b> Parça ayrılır, operatör ekrandaki görüntüye bakarak OK / RED verir. Parametre önerisi uygulanmaz.</li>
+          <li><b>&lt; %80 — fallback:</b> Parça RED sayılır, ilerleme ve devir son onaylı değerlerle devam eder.</li>
+          <li>Arka arkaya çok sayıda düşük güvenli karar gelirse (örneğin 10 parçanın 5'i) kesim durdurulur ve kamera, aydınlatma ve lens kontrol edilir.</li>
+        </ul>
+        Makineyi her düşük güvende durdurmak gerekmez, çünkü insanın emniyeti YZ'ye değil, YZ'den bağımsız emniyet fonksiyonlarına bağlıdır.</div></li>
+  </ol>
+
+  <h2>Karar tablosu — AI Fail-Safe Decision</h2>
+  <table>
+    <tr><th>Başarısızlık</th><th>Tanımladığınız güvenli davranış (hangi kavramla?)</th></tr>
+    <tr><td>Model yanlış sınıflandırdı</td><td>Kural tabanlı ölçüm ile ikinci kontrol ve operatörün numune kontrolü; parametre önerileri sabit güvenli aralıkla sınırlı. <b>Monitoring + human override</b></td></tr>
+    <tr><td>Girdi manipüle edildi</td><td>Kare sayacı, görüntü kalitesi ve nesting planıyla karşılaştırma ile tespit; şüphede YZ devre dışı, son onaylı parametreler, parçalar elle kontrol. <b>Monitoring + fail-safe + fallback</b></td></tr>
+    <tr><td>Confidence düştü</td><td>%95 üstü otomatik, %80–95 operatöre sorulur, %80 altı RED ve onaylı parametrelerle devam; sürekli düşük güvende kesim durur. <b>Confidence threshold + human override + fallback</b></td></tr>
+  </table>
+
+  <div class="foot">Bu föyün çıktısı <b>AI Fail-Safe Decision</b> → Evidence Pack <b>EP 03 + EP 15</b> başlığına oturur.</div>
+
+  <p class="refs"><b>Kaynaklar:</b> EU 2024/1689 Yapay Zekâ Yasası (AI Act) · EU 2023/1230 Makine Yönetmeliği (öğrenen sistemler ve emniyet fonksiyonları) · ISO/IEC TR 5469 (yapay zekâ ve fonksiyonel emniyet).</p>
+</main>
+<div class="pf"><span>SAFETY 4.0 BOOTCAMP · Drachen 2128 Hyper · Bu bir eğitim çıktısıdır, resmî denetim değildir.</span><span>LAB 7</span></div>
+</div>
+</body>
+</html>
